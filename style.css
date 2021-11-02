@@ -7,6 +7,7 @@ body {
     display: flex;
     flex-direction: column;
     align-items:center;
+
 }
 
 .gameboard{
@@ -17,9 +18,52 @@ body {
     gap:7.5px;
     width:600px;
     height:600px;
-    background-color: rgb(221, 221, 221);
-
+    /* border: rgb(221, 221, 221) 7.5px solid; */
+    border-radius: 48.75px;
 }
+
+.gameboard-frame{
+    position: absolute;
+    /* border: rgb(221, 221, 221) 7.5px solid; */
+    width: 600px;
+    height: 600px;
+    border-radius: 48.75px;
+    pointer-events: none;
+}
+
+.line {
+    position: absolute;
+    background-color: black;
+    pointer-events: none;
+    border-radius: 3.75px;
+}
+
+.gameboard-frame div:nth-child(1) {
+    top:195px;
+    width: 600px;
+    height:7.5px;
+}
+
+.gameboard-frame div:nth-child(2) {
+    top:397.5px;
+    width: 600px;
+    height:7.5px;
+}
+
+.gameboard-frame div:nth-child(3) {
+    left:397.5px;
+    width: 7.5px;
+    height:600px;
+}
+
+.gameboard-frame div:nth-child(4) {
+    left:195px;
+    width: 7.5px;
+    height:600px;
+}
+
+
+
 
 .square{
     width: 195px;
@@ -29,17 +73,181 @@ body {
     align-items:center;
     font-size: 200px;
     user-select: none;
-    background-color: white;
     transition: ease 0.3s;
 }
 
-.square:hover {
-    /* background-color: rgb(221, 221, 221); */
-    border-radius: 25%;
+
+.indicator {
+    color:rgb(181, 182, 251);
 }
+
 
 header {
     display: flex;
     justify-content: space-between;
     width: 85vw;
+}
+
+.your-turn {
+    color: rgb(181, 182, 251);
+    transform: scale(1.4);
+}
+
+.p-name {
+    transition: ease 0.3s;
+    
+}
+
+.rematch {
+    transition: ease 0.3s;
+}
+
+.rematch:hover {
+    color: cyan;
+    transform: scale(1.2);
+    cursor: pointer;
+}
+
+.winner {
+    color: cyan;
+    transform: scale(1.2);
+}
+
+
+.area{
+    position: absolute;
+    top: 0;
+    left: 0;
+    background: #4e54c8;  
+    background: linear-gradient(to left, #6f7fd8, #4e54c8);  
+    width: 100%;
+    height:100vh;
+    z-index: -1;
+    
+   
+}
+
+.circles{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 95vw;
+    height: 98.5vh;
+    overflow: hidden;
+}
+
+.circles li{
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    list-style: none;
+    width: 20px;
+    height: 20px;
+    color: rgba(255, 255, 255, 0.2);
+    animation: animate 25s linear infinite;
+    bottom: -150px;
+    
+}
+
+.circles li:nth-child(1){
+    left: 25%;
+    width: 80px;
+    height: 80px;
+    animation-delay: 0s;
+    font-size: 10rem;
+}
+
+
+.circles li:nth-child(2){
+    left: 10%;
+    width: 20px;
+    height: 20px;
+    animation-delay: 2s;
+    animation-duration: 12s;
+    font-size: 3rem;
+}
+
+.circles li:nth-child(3){
+    left: 70%;
+    width: 20px;
+    height: 20px;
+    animation-delay: 4s;
+    font-size: 2rem;
+}
+
+.circles li:nth-child(4){
+    left: 40%;
+    width: 60px;
+    height: 60px;
+    animation-delay: 0s;
+    animation-duration: 18s;
+    font-size: 5rem;
+}
+
+.circles li:nth-child(5){
+    left: 65%;
+    width: 20px;
+    height: 20px;
+    animation-delay: 0s;
+    font-size: 7rem;
+}
+
+.circles li:nth-child(6){
+    left: 75%;
+    width: 110px;
+    height: 110px;
+    animation-delay: 3s;
+    font-size: 13rem;
+}
+
+.circles li:nth-child(7){
+    left: 35%;
+    width: 150px;
+    height: 150px;
+    animation-delay: 7s;
+    font-size: 13rem;
+}
+
+.circles li:nth-child(8){
+    left: 50%;
+    width: 25px;
+    height: 25px;
+    animation-delay: 15s;
+    animation-duration: 45s;
+    font-size: 9rem;
+}
+
+.circles li:nth-child(9){
+    left: 20%;
+    width: 15px;
+    height: 15px;
+    animation-delay: 2s;
+    animation-duration: 35s;
+    font-size: 3rem;
+}
+
+.circles li:nth-child(10){
+    left: 85%;
+    width: 150px;
+    height: 150px;
+    animation-delay: 0s;
+    animation-duration: 11s;
+    font-size: 8rem;
+}
+
+
+
+@keyframes animate {
+
+    0%{
+        transform: translateY(0) rotate(0deg);
+        opacity: 1;
+    }
+
+    100%{
+        transform: translateY(-1000px) rotate(720deg);
+        opacity: 0;
+    }
+
 }
