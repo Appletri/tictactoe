@@ -7,7 +7,7 @@ body {
     display: flex;
     flex-direction: column;
     align-items:center;
-
+    
 }
 
 .gameboard{
@@ -30,6 +30,7 @@ body {
     border-radius: 48.75px;
     pointer-events: none;
 }
+
 
 .line {
     position: absolute;
@@ -63,7 +64,37 @@ body {
 }
 
 
+.player {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+.icons {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+}
+.icons img{
+    transition: ease 0.3s;
+}
 
+.icons img:hover {
+    filter: invert(78%) sepia(4%) saturate(7315%) hue-rotate(195deg) brightness(103%) contrast(97%);
+    transform: scale(1.2);
+}
+.selected {
+    filter: invert(78%) sepia(4%) saturate(7315%) hue-rotate(195deg) brightness(103%) contrast(97%);
+    transform: scale(1.2);
+}
+
+.icon-winner {
+    filter: invert(95%) sepia(71%) saturate(7026%) hue-rotate(103deg) brightness(102%) contrast(109%);
+    transform: scale(1.2);
+}
+
+#title {
+    font-size: 40px;
+}
 
 .square{
     width: 195px;
