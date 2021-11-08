@@ -1,5 +1,6 @@
 html {
     font-family: 'Varela Round', sans-serif;
+
 }
 
 
@@ -9,6 +10,7 @@ body {
     align-items:center;
     
 }
+
 
 .gameboard{
     display: flex;
@@ -150,7 +152,8 @@ header {
     top: 0;
     left: 0;
     background: #4e54c8;  
-    background: linear-gradient(to left, #6f7fd8, #4e54c8);  
+    background: linear-gradient(to left, #6f7fd8, #4e54c8);
+    min-height: 750px;
     width: 100%;
     height:100vh;
     z-index: -1;
@@ -163,7 +166,7 @@ header {
     top: 0;
     left: 0;
     width: 95vw;
-    height: 98.5vh;
+    height: 98.1vh;
     overflow: hidden;
 }
 
@@ -268,17 +271,88 @@ header {
 }
 
 
-
 @keyframes animate {
-
+    
     0%{
         transform: translateY(0) rotate(0deg);
         opacity: 1;
     }
-
+    
     100%{
         transform: translateY(-1000px) rotate(720deg);
         opacity: 0;
+    }
+    
+    
+}
+
+@media screen and (max-width:628px){
+     html {
+         font-size: 8px;
+     }
+
+     #title {
+         font-size: 16px;
+     }
+     .icons img{
+         width:24px;
+     }
+     .gameboard {
+         width:310px;
+         height:310px;
+         
+         
+     }
+     .gameboard-frame{
+        position: absolute;
+        /* border: rgb(221, 221, 221) 7.5px solid; */
+        width: 300px;
+        height: 300px;
+        border-radius: 48.75px;
+        pointer-events: none;
+    }
+    
+    
+    .line {
+        position: absolute;
+        background-color: black;
+        pointer-events: none;
+        border-radius: 3.75px;
+    }
+    
+    .gameboard-frame div:nth-child(1) {
+        top:97.5px;
+        width: 300px;
+        height:3.75px;
+    }
+    
+    .gameboard-frame div:nth-child(2) {
+        top:198.75px;
+        width: 300px;
+        height:3.75px;
+    }
+    
+    .gameboard-frame div:nth-child(3) {
+        left:198.75px;
+        width: 3.75px;
+        height:300px;
+    }
+    
+    .gameboard-frame div:nth-child(4) {
+        left:97.5px;
+        width: 3.75px;
+        height:300px;
+    }
+    
+    .square{
+        width: 97.5px;
+        height:97.5px;
+        display: flex;
+        justify-content: center;
+        align-items:center;
+        font-size: 100px;
+        user-select: none;
+        transition: ease 0.3s;
     }
 
 }

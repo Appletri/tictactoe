@@ -1,7 +1,7 @@
 const gameboardObj = (() => {
     const _board = document.querySelector(".gameboard");
-    let _gameboard = [];
     const _winningCom = [[0,1,2],[3,4,5],[6,7,8],[0,3,6],[1,4,7],[2,5,8],[0,4,8],[2,4,6]];
+    let _gameboard = [];
     let computerState = false;
     let computer = 1;
 
@@ -88,7 +88,7 @@ const gameboardObj = (() => {
                 check4win(mark);
             }
             else {
-                gameplay.turn();
+                
                 check4win(player1.mark);
                 computerTurn('right');
                 
@@ -99,8 +99,6 @@ const gameboardObj = (() => {
             let openSpots = _gameboard.filter(spot => spot == '');
             let computerPlay = _gameboard.indexOf('', getRandomInt(openSpots.length));
             const computerTarget = document.getElementById(`${computerPlay}`);
-
-
 
             if (openSpots.length === 0){
                 return;
@@ -124,10 +122,10 @@ const gameboardObj = (() => {
                 
             }
             
-            
-            
+  
             if (check4win(player1.mark) === undefined) {
                 setTimeout (() => {
+                    gameplay.turn();
                     _render();
                     check4win(player2.mark)
                     computerState = false;
@@ -304,6 +302,7 @@ const displayController = (p1, p2) => {
     const getTurn = () => _playerTurn;
 
     const turn = () => {    
+        
         if (_playerTurn == p1) {
             _playerTurn = p2;
             _p2name.classList.add('your-turn');
@@ -313,7 +312,8 @@ const displayController = (p1, p2) => {
             _playerTurn = p1;
             _p1name.classList.add('your-turn');
             _p2name.classList.remove('your-turn');
-        }      
+        } 
+        console.log(_playerTurn);     
     };
 
     const getWinner = (winner, computer) => {
