@@ -18,9 +18,11 @@ const gameboardObj = (() => {
             e.target.classList.add('selected');
             if (compR.className === 'computer-right selected'){
                 computer = 1;
+                gameplay.computer = 1;
             }
             else {
                 computer = 0;
+                gameplay.computer = 0;
             }
         }
     }
@@ -86,9 +88,10 @@ const gameboardObj = (() => {
                 check4win(mark);
             }
             else {
+                gameplay.turn();
                 check4win(player1.mark);
                 computerTurn('right');
-                gameplay.turn();
+                
             }
         }
         
@@ -162,13 +165,11 @@ const gameboardObj = (() => {
 
                         }    
                     }
-                    console.log (bestScore);
                 }
                 determineWinCom(player1.mark, -1);
                 determineWinCom(player2.mark, 1);
                 if (bestScore > 0){                    
                     //attack since there is nothing to defend
-                    console.log('computer should win');
 
                     for (x=0; x<winCom.length; x++){
                         if (_gameboard[winCom[x]] === ''){
@@ -257,7 +258,7 @@ const gameboardObj = (() => {
                 squares.removeEventListener('mouseout', _removeIndicator);
             };
             const winner = gameplay.getTurn();
-            gameplay.getWinner(winner);
+            gameplay.getWinner(winner, computer);
             
         };
         function restart (){
@@ -268,7 +269,7 @@ const gameboardObj = (() => {
             _gameboard = [];
             _removeSquares();
             _squares(); 
-            gameplay.restart(); 
+            gameplay.restart(computer); 
             computerState = false;  
         }
         function restartButton (){
@@ -284,18 +285,9 @@ const gameboardObj = (() => {
             square.textContent = _gameboard[i]; 
         }
     };
-    
+
+
 })();
-
-
-
-
-
-
-
-
-
-
 
 
 const displayController = (p1, p2) => {
@@ -305,8 +297,10 @@ const displayController = (p1, p2) => {
     _p1name.classList.add('your-turn');
     _p2name.classList.remove('your-turn');
     const _leftIcon = document.querySelector('.human-left');
-    // const _rightIcon = document.querySelector('.human-left');
-  
+    const _rightIconH = document.querySelector('.human-right');
+    const _rightIconC = document.querySelector('.computer-right');
+    let computer = 1;
+
     const getTurn = () => _playerTurn;
 
     const turn = () => {    
@@ -322,33 +316,56 @@ const displayController = (p1, p2) => {
         }      
     };
 
-    const getWinner = (winner) => {
+    const getWinner = (winner, computer) => {
+        
         if (winner.name != 'player 1') {
             _p1name.className = 'p-name winner';
             _p2name.className = '';
             _leftIcon.className = ('icon-winner');
-            
+            _rightIconC.className = '';
+            _rightIconH.className = '';
         }
         else {
             _p2name.className = 'p-name winner';
             _p1name.className = '';
-            // _leftIcon.className = ('icon-winner');
+            _leftIcon.className = ('');
+            if (computer == 1) {
+                _rightIconC.className = ('icon-winner');
+            }
+            else{
+                _rightIconH.className = ('icon-winner');
+            }
+            
         }  
     }
 
-    const restart = () => {
+    const restart = (computer) => {
+        
         _p1name.className = 'p-name your-turn';
         _p2name.className = 'p-name';
         _leftIcon.className = ('human-left selected');
         _playerTurn = p1;
+        _rightIconC.className = 'computer-right';
+        _rightIconH.className = 'human-right';
+
+        if (computer == 1) {
+            _rightIconC.classList.add('selected');
+        }
+        else{
+            _rightIconH.classList.add('selected');
+        }
+        
     }
 
     const tied = () => {
         _p1name.className = 'p-name';
         _p2name.className = 'p-name';
+        _leftIcon.className = '';
+        _rightIconC.className = '';
+        _rightIconH.className = '';
     }
 
-    return {getTurn, turn, getWinner, restart, tied};
+    return {getTurn, turn, getWinner, restart, tied, computer};
 };
 const player = (name, mark) => {
     return {name, mark};
