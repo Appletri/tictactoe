@@ -105,7 +105,6 @@ const gameboardObj = (() => {
             }
             else if(openSpots.length <= 6){
                 minMax();            
-
             }
             else if (_gameboard[4] === '') {
                 _gameboard[4] = player2.mark;
@@ -114,12 +113,10 @@ const gameboardObj = (() => {
             else if (_gameboard[0] === ''){
                 _gameboard[0] = player2.mark;
                 computerREL(document.getElementById('0'));
-                
             }
             else {
                 _gameboard[computerPlay] = player2.mark;
-                computerREL(computerTarget);
-                
+                computerREL(computerTarget);   
             }
             
   
@@ -133,8 +130,6 @@ const gameboardObj = (() => {
                 
                 
             }
-
-
 
             function minMax () {
                
@@ -154,7 +149,7 @@ const gameboardObj = (() => {
                             const indexes =  getAllIndexes(child, mark);
                                 
                             for (y=0;y<_winningCom.length;y++){
-                                if (_winningCom[y].every(elem => indexes.includes(elem)) == true){    
+                                if (_winningCom[y].every(elem => indexes.includes(elem))){    
                                     
                                     winCom = _winningCom[y]; 
                                     bestScore += val;
@@ -209,7 +204,7 @@ const gameboardObj = (() => {
                 target.removeEventListener('click', _play);
                 setTimeout (()=> {
                     target.classList.remove('indicator');
-                }, 500);
+                }, 700);
             }
 
             function getRandomInt(max) {
@@ -222,7 +217,7 @@ const gameboardObj = (() => {
             // console.log(indexes);
             if (indexes.length >= 3){               
                 for (i=0;i<_winningCom.length;i++){
-                    if (_winningCom[i].every(elem => indexes.includes(elem)) == true){
+                    if (_winningCom[i].every(elem => indexes.includes(elem))){
                         winner(_winningCom[i]);
                         return 'winner';
                     }

@@ -39,6 +39,7 @@ body {
     background-color: black;
     pointer-events: none;
     border-radius: 3.75px;
+    transition: ease 0.3s;
 }
 
 .gameboard-frame div:nth-child(1) {
@@ -96,7 +97,26 @@ body {
 
 #title {
     font-size: 40px;
+    font-family: 'Sniglet', cursive;
+    transition: ease 0.3s;
+    color: rgb(15, 15, 15);
+    text-shadow: 2px -2px rgb(181, 182, 251), -2px 2px cyan, 0px 0px 30px #4e54c8;
+    user-select: none;
+    animation: colorRotate 5s linear infinite;
 }
+
+@keyframes colorRotate {
+    0%{
+        text-shadow: 2px -2px rgb(181, 182, 251), -2px 2px cyan, 0px 0px 30px #4e54c8;
+    }
+    50%{
+        text-shadow: 2px -2px cyan , -2px 2px rgb(181, 182, 251), 0px 0px 30px #4e54c8;
+    }
+    100%{
+        text-shadow: 2px -2px rgb(181, 182, 251), -2px 2px cyan, 0px 0px 30px #4e54c8;
+    }
+}
+
 
 .square{
     width: 195px;
@@ -286,14 +306,19 @@ header {
     
 }
 
+
+
 @media screen and (max-width:628px){
      html {
          font-size: 8px;
+
      }
 
      #title {
          font-size: 16px;
+         text-shadow: 0.5px -0.5px rgb(255, 0, 242), -0.5px 0.5px cyan;
      }
+     
      .icons img{
          width:24px;
      }
@@ -355,4 +380,22 @@ header {
         transition: ease 0.3s;
     }
 
+    .circles{
+        position: absolute;
+        top: 0;
+        left: -50px;
+        width: 98vw;
+        height: 98.1vh;
+        overflow: hidden;
+    }
+
+}
+
+@media screen and (min-width:800px){
+    #title img {
+        width: 400px;
+    }
+    #title {
+        font-size: 60px;
+    }
 }
