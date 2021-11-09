@@ -189,7 +189,6 @@ const gameboardObj = (() => {
 
                 }
                 else if (_gameboard[4] === '') {
-                    console.log('this one');
                     _gameboard[4] = player2.mark;
                     computerREL(document.getElementById('4'));
                 }
@@ -308,7 +307,7 @@ const displayController = (p1, p2) => {
             _p1name.classList.add('your-turn');
             _p2name.classList.remove('your-turn');
         } 
-        console.log(_playerTurn);     
+            
     };
 
     const getWinner = (winner, computer) => {
