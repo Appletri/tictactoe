@@ -83,11 +83,11 @@ const gameboardObj = (() => {
             _render();
             
             
-            if (computer === 0){
+            if (computer === 0 || currentTurn == player2){
                 computerState = false;
                 check4win(mark);
             }
-            else {
+            else if (computer === 1 && currentTurn == player1){
                 
                 check4win(player1.mark);
                 computerTurn('right');
